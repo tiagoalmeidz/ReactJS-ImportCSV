@@ -1,12 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import CSVReader from "react-csv-reader";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const handleForce = data => {
+  let csv = data;
+  console.log(csv);
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const reader = (
+  <div className="container">
+    <CSVReader
+      cssClass="react-csv-input"
+      label="Select CSV with secret Death Star statistics"
+      onFileLoaded={handleForce}
+    />
+    <p>and then open the console</p>
+  </div>
+);
+
+ReactDOM.render(reader, document.getElementById("root"));
